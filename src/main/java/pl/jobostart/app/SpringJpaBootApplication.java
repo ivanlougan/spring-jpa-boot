@@ -15,6 +15,10 @@ public class SpringJpaBootApplication {
         BookDao dao = ctx.getBean(BookDao.class);
         Book book = new Book("123456778", "Spring is fun and Java as well", "Robercik");
         dao.save(book);
+
+        Book foundBook = dao.get(1L);
+        System.out.println(foundBook);
+
         Thread.sleep(5000);
 
     }

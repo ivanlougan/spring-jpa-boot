@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import javassist.SerialVersionUID;
 
@@ -13,10 +14,12 @@ public class Book implements Serializable {
 
     private static final long SerialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue
+
+    //    @Id
+//    @GeneratedValue
     private Long id;
     private String isbn;
+//    @Transient
     private String title;
     private String author;
 
@@ -38,6 +41,17 @@ public class Book implements Serializable {
     }
 
 
+    @Id
+    @GeneratedValue
+    public Long getId() {
+        System.out.println(">>>>>>>>>>>>>>>>>>get id");
+        return id;
+    }
+
+    public void setId(Long id) {
+        System.out.println(">>>>>>>>>>>>>>>>>>>set id");
+        this.id = id;
+    }
 
     public String getIsbn() {
         return isbn;
@@ -45,18 +59,21 @@ public class Book implements Serializable {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+    public String getAuthor() {
+        return author;
+    }
+
+    @Transient
     public String getTitle() {
         return title;
     }
     public void setTitle(String title) {
         this.title = title;
     }
-    public String getAuthor() {
-        return author;
-    }
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+
 
 
 
